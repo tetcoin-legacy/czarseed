@@ -31,7 +31,7 @@ public:
   CDnsSeedOpts() : nThreads(96), nDnsThreads(4), nPort(53), mbox(NULL), ns(NULL), host(NULL), tor(NULL), fUseTestNet(false), fWipeBan(false), fWipeIgnore(false) {}
 
   void ParseCommandLine(int argc, char **argv) {
-    static const char *help = "Tetcoin-seeder\n"
+    static const char *help = "Czarcoin-seeder\n"
                               "Usage: %s -h <host> -n <ns> [-m <mbox>] [-t <threads>] [-p <port>]\n"
                               "\n"
                               "Options:\n"
@@ -342,13 +342,13 @@ extern "C" void* ThreadStats(void*) {
   } while(1);
 }
 
-static const string mainnet_seeds[] = {"dnsseed.tetcoin.com", "dnsseed.tetcoin.org", ""};
-static const string testnet_seeds[] = {"testnet-seed.tetcoin.com", ""};
+static const string mainnet_seeds[] = {"seed.czarcoin.co", "dnsseed.czarcoin.co", ""};
+static const string testnet_seeds[] = {"testnet-seed.czarcoin.co", ""};
 static const string *seeds = mainnet_seeds;
 
 extern "C" void* ThreadSeeder(void*) {
   if (!fTestNet){
-    db.Add(CService("kjy2eqzk4zwi5zd3.onion", 8888), true);
+    db.Add(CService("kjy2eqzk4zwi5zd3.onion", 8814), true);
   }
   do {
     for (int i=0; seeds[i] != ""; i++) {
@@ -377,10 +377,10 @@ int main(int argc, char **argv) {
   bool fDNS = true;
   if (opts.fUseTestNet) {
       printf("Using testnet.\n");
-      pchMessageStart[0] = 0xda;
-      pchMessageStart[1] = 0xa3;
-      pchMessageStart[2] = 0xd4;
-      pchMessageStart[3] = 0xba;
+      pchMessageStart[0] = 0x63;
+      pchMessageStart[1] = 0x7a;
+      pchMessageStart[2] = 0x72;
+      pchMessageStart[3] = 0x74;
       seeds = testnet_seeds;
       fTestNet = true;
   }
