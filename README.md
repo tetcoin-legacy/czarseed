@@ -1,7 +1,7 @@
-litecoin-seeder
+Czarcoin-seeder
 ===============
 
-Litecoin-seeder is a crawler for the Litecoin network, which exposes a list
+Czarcoin-seeder is a crawler for the Czarcoin network, which exposes a list
 of reliable nodes via a built-in DNS server.
 
 Features:
